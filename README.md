@@ -1,2 +1,3 @@
 # flying-days
-Place for saving what I've learned today.
+滿足自己的資訊儲物症。
+(更新：2018/01/03)
