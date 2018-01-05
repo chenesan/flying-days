@@ -31,3 +31,66 @@ Jan. 2018
     * 在不同的頁面上共用資料的寫法，最近才在專案中用到。像是分類等一段時間都不會變動而又常常在不同地方用到的資料，就很適合額外拉出來，可以節省邏輯的程式碼以及request。
     * 保留編輯狀態的寫法目前還沒有用在專案裡面過，但應該對管理後台類型的網站很有用。
     * 公司之前的專案都是依api來切reducer，一開始進去的時候也沒有特別想過，寫起來就綁手綁腳的(例如同時有不同的地方要叫同一個api)。還是依照頁面來切reducer才是正解啊。
+
+## 01/05, Fri.
+
+### 問題
+
+* 固定大小的元素在RWD當中應該怎麼處理呢？RWD就要讓所有的東西都等比例嗎？(看完*Responsive Web Design*的疑問，也是實作以來一直碰到的問題)
+* retina螢幕對圖片的渲染有什麼影響？px、dpi、螢幕解析度、viewport等等的實際意思是什麼，又會怎麼影響開發呢？之前不時會碰到相關的討論但一直沒有弄懂。
+* 略讀過[Vue](https://vuejs.org/v2/guide/)的文件後，反而更加困惑了：
+
+    * Vue和React差在哪裡呢？什麼時候會用哪一個？
+    * React有什麼不好的地方呢？一直以來都覺得React還算好寫好用，但它總該有不好用的時候。
+    * Two-way和One-way binding的意思。
+
+### 技術
+
+* 讀完Ethan Marcotte的*Responsive Web Design*(2011年的書，距今也七年了)，了解當年RWD剛推出時包含的內容。
+
+* [Vue.js](https://vuejs.org/v2/guide/)：為了了解現代前端框架的異同好壞，最近打算摸一點點React之外的東西。大概略讀過了這份guide，引出了更多問題(見上面的問題)
+
+* es6中的`export`語法，按[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)的文件，可以分成兩種，一種是named export：
+
+```javascript
+const func = () => {}
+const obj = {}
+export {
+    func,
+    obj    
+}
+// 或者這樣
+export const abc = "abc"
+export const def = "def"
+```
+可以一次export多個不同的值，就不用重複寫module的名字了。
+另一種是default export。
+
+```javascript
+const func = () => {}
+export default func
+```
+
+好處是`import`default export出來的東西時，可以隨便使用者命名。
+
+這些語法平常都用很久了，不過是最近才發現原來不能這樣寫：
+
+```javascript
+// module.js
+
+const funcA = () => { console.log("a")}
+
+export default { funcA }
+
+// client.js
+import { funcA } from "module"
+// 會報出`module._default.funcA is not a function`的錯
+funcA()
+```
+
+另外，有時候專案會碰到`require/module.exports`和es6`import/export`混用的狀況，有時也會出現import error的情形，找個時間來研究一下。
+
+### 趣聞
+
+* *夜的盡頭*：現代人常常會為了不能快速入睡、失眠而傷腦筋。然而以前的人在沒有夜間照明的時候，遵守日出日落的作息，睡覺的時候比我們要長得多，實際上，睡眠中間會有一段時間是意識清醒的。他們很可能沒有那麼快睡著，而且他們並不為此擔心。相較之下，今人其實是為了沒有那麼快入睡焦慮太多了。
+* 還是*夜的盡頭*：常識認為夜間照明有助犯罪率下降，然而研究發現，夜間照明和犯罪率並沒有顯著的關係，強化夜間照明可能會讓犯罪率下降/上升/不變(雖然書中並沒有進一步提到有沒有其它的中間因素)。實際上，**過強的**照明反而讓你看不清楚眼前的狀況，而有對比的照明才能讓人看清楚景物。人們之所以認為夜間照明對阻止犯罪有效，恐怕是出於人對於黑夜感到害怕的天性。
