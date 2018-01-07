@@ -114,3 +114,48 @@ funcA()
 ### 趣聞
 
 * 今天頭一次去新北市圖總館，頭一次玩自助取書機，機器跑上跑下的樣子很有趣，也蠻方便的。
+
+## 01/07, Sun.
+
+### 問題
+
+* 怎麼做圖片的載入優化？記得看過medium、google image等等有很多不同的做法，想來研究一下怎麼實作。
+* `em`除了在控制文本內容的大小時可以用，好像也常看到它用在layout上，什麼時候用`em`什麼時候用`px`呢？
+
+### 技術
+
+* [Semantic Versioning(semver)](https://semver.org/)：一種版本號的命名方式，目的是為了解決相依性的問題，格式如下：
+
+    給定一個版本號**X.Y.Z**，假設，發佈的軟體包有一組公共的api，這個公共的api應該透過文件或程式碼讓使用者清楚知道。
+    * X是主版號(major version)，當新的版本有不相容於舊版本的公共api變更時，更新主版號。
+    * Y是次版號(minor version)，當新的版本有相容於舊版本的公共api變更/新增時，更新次版號。
+    * Z是修訂號(patch version)，當新版本僅修復問題而不修改公共api時，更新修訂號。
+    * 在公共api可以被明確定義出來之前，或者當軟體包仍在快速開發時，使用0.Y.Z的版本號，1.0.0以上的版號都應該有一組穩定、不會隨意變動的公共api。
+    
+    這麼做的好處是，使用者可以直接判斷這次的更新會不會導致依賴出錯，只要主版本號未變動，便可以放心的更新套件。
+    
+* [responsive images](https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)：接續昨天的討論，可以用`srcset`和`<picture>`來做到圖片載入的媒體查詢。比方說：
+
+    ```html
+    <!-- 
+    對於device-pixel-ratio為1的一般螢幕，
+    載入寬度為600px的圖片；
+    對於retina或device-pixel-ratio為2的螢幕，
+    載入寬度為1200px的圖片
+    如果width > 1000px，圖片寬為50vw；反之則為100vw
+    -->
+    <img
+      src="lion-600w.jpg"
+      sizes="(min-width: 1000px) 50vw, 100vw"
+      alt="lion"
+      srcset="
+        lion-600w.jpg 1x
+        lion-1200w.jpg 2x    
+      "
+    />
+    ```
+
+    `<picture>`則是類似於`<audio>`和`<video>`，可以在裡頭放入多個`<source>`標記，每個`<source>`標記可以依照圖片格式、媒體查詢讓瀏覽器選擇最適合的圖片，比起`img`更進一步。但缺點是IE11目前不支援，不過已經有人寫了[polyfill](http://scottjehl.github.io/picturefill/)。
+
+
+
