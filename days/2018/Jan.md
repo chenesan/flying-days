@@ -192,3 +192,13 @@ funcA()
 
 * [Payment API](https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/)：Payment API是便於網頁開發者創建金流的瀏覽器API，最近在tml5.2中發佈。它比起以前自建的表單更加安全，而且使用者只要在瀏覽器中記錄了付款方式，在所有的網站上都可以自動使用同一組資料來付款，對於使用者體驗有很大的幫助，尤其是在不便使用鍵盤輸入的行動裝置上(在行動裝置上有84%的付款被取消)。除了一般的信用卡，也可以串接行動支付如Android Pay、Apple Pay等等。目前在Chrome和Edge以及Samsung的內建瀏覽器已有實作，估計在不久的將來Firefox和Safari也會實作Payment API。
 
+## 01/11, Thu.
+
+### 技術
+
+* [網頁字體的一些事](https://blog.user.today/things-about-fonts/)：今天在設定預設網頁字型時讀到的一篇短文，幾個小要點：
+
+    * `font-family`的設定原則：比較通用的放在後面，因此英文字型要放在前面，否則會被前面中文字型的英文部分吃掉。
+    * `font-family`的字型名稱盡量使用英文，這樣非中文語系的用戶也可以讀到正確的字體。例如`Microsoft JhengHei`就會比`微軟正黑體`來得好，後者只有`zh-tw`的語系才可讀懂。
+    * 中文字型並不是在任何`font-size`下看起來都一樣，盡量不要用`14px`和`20px`的中文字。
+* [找出所有在commit之間被修改過的檔案](https://coderwall.com/p/lz0uva/find-all-files-modified-between-commits-in-git)：`git diff --name-only <start commit> <end commit>`
