@@ -216,3 +216,16 @@ funcA()
 ### 技術
 
 * [Don’t do it at runtime. Do it at design time.](https://medium.freecodecamp.org/dont-do-it-at-runtime-do-it-at-design-time-c4f59d1775e4)：如果可以在設計時就決定的事情，不要在執行時期才做，避免影響執行的效能。
+
+## 01/14, Sun.
+
+### 技術
+
+* [scrollama](https://github.com/russellgoldenberg/scrollama)是一個便於實作滾動時畫面變化的套件，倒是有點好奇裡頭是怎麼做的...
+* [PERMISSIONS ON THE WEB SUCK](https://philna.sh/blog/2018/01/08/permissions-on-the-web-suck/)和[Permiision UX](https://developers.google.com/web/fundamentals/push-notifications/permission-ux)：現在很多網站都會在頁面載入時就要求推播通知，和蓋版廣告一樣惱人。作者認為，notification本身沒有錯，有錯的是糟糕的UX，簡要的說：
+
+    * 只在使用者真的會有興趣收到通知的情境下使用通知；例如訂單到貨、使用者喜愛的內容訂閱等等，不要在頁面載入時就要求通知，這會讓使用者在還搞不清楚狀況時被搞得很煩。
+    * 除了原生的通知權限請求對話框，另外在網站上實作自己的權限請求UI，使用者在點擊了客製的UI後，再去呼叫`pushNotification`丟出原生的對話框，這樣可以確保使用者不會被嚇到。
+    * 在管理界面中實作通知的開關，如此一來想要取消訂閱的用戶可以自行關閉通知。許多網站都忘了做這件事情。
+
+    除了網站自身的UX改進，作者也提到瀏覽器也需要更好的通知設定控制，就像現在的瀏覽器可以管理如何阻擋popup一樣，而不是直接開放一個全局選項來擋住通知。否則，一般用戶多半會選擇封鎖所有的通知，而讓所有的網站都沒辦法妥善使用通知功能。
