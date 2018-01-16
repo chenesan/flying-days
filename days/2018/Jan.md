@@ -243,4 +243,27 @@ funcA()
     * 承上上，測試需要成本，如果它的成本大於風險，那不測試才是理智的選擇。例如，它推遲了產品發佈的時間、耗費太多人力，等等。
     * 承上上上，測試是為了得到資訊來減少風險，如果測試得來的資訊不夠好，沒辦法減少風險，那或許真正該做的是檢討測試的過程，例如測試人員對被測試的專案了解不夠、測試的品質不好，等等。
 
-* [The Cryptopals Crypto Challenges](https://cryptopals.com/)是[matasano security](https://www.nccgroup.trust/uk/)團隊推出的一系列密碼學問題，一共有8組問題48道題目，目的是讓開發者透過解題的過程學習密碼學的知識，了解到真實世界的破密和攻擊是怎麼一回事。已經有人做過了，詳細的心得可以讀[這一篇](https://blog.pinboard.in/2013/04/the_matasano_crypto_challenges/)
+* [The Cryptopals Crypto Challenges](https://cryptopals.com/)是[matasano security](https://www.nccgroup.trust/uk/)團隊推出的一系列密碼學問題，一共有8組問題48道題目，目的是讓開發者透過解題的過程學習密碼學的知識，了解真實世界的破密和攻擊是怎麼一回事。已經有人做過了，詳細的心得可以讀[這一篇](https://blog.pinboard.in/2013/04/the_matasano_crypto_challenges/)
+
+## 01/17, Wed.
+
+### 技術
+
+* [Perfect Software: And Other illusions about testing](https://www.amazon.com/Perfect-Software-Illusions-Weinberg-2008-08-29/dp/B01FIX20JW/ref=sr_1_2?ie=UTF8&qid=1516027709&sr=8-2&keywords=perfect+software+and+other+illusions+about+testing)：
+
+    * 測試永遠只能是情境的抽樣，不可能顧及所有可能的輸入和操作情況(那將是幾何級數等級的測試量)。因此，不存在**完美**的測試，只存在**足夠好**的測試。
+    * 因此我們總是在兩件事之間掙扎：
+
+        1. 希望測試大到可以覆蓋我們有興趣的條件。
+        2. 希望測試集小到成本足以接受。
+
+        * 問題：對於那些我們不知道藏身何處、運氣好才抓到的缺陷，要用什麼方法才能盡可能找到？
+
+    * 人們會把測試和「搞清楚問題」、「確認嚴重性」、「解決缺陷」等等的行為混為一談，因此測試者和開發者的責任也因此變得不清楚，一個團隊需要有明確的分工避免在責任歸屬的問題上花太多時間。
+    * 從測試的過程本身也可以測試出產品的好壞。例如測試人員是不是足夠了解測試流程、產品經理對測試抱有哪些錯誤的看法、等等。
+
+* Chrome和Safari等webkit系列的瀏覽器，如果使用`background-image`和`background-size: cover`設置背景圖片時，在元素的數量很多的狀況下滾動，就會導致不斷重繪而嚴重掉幀。Firefox反而沒有這個問題。可能的解法包含：
+    * 用 `<img>` 
+    * `transform: translate3d(0, 0, 0)`會強迫瀏覽器額外為該元素開一層layer並使用GPU去繪製。理論上會比較快但是用太多也可能有反效果。
+    * 壓縮圖片大小
+
