@@ -291,3 +291,18 @@ funcA()
 ### 趣聞
 
 * 感冒要不要吃橘子：如果咳的時候有痰，那麼吃橘子無妨；但如果咳的時候是乾的、喉嚨會癢，那麼吃橘子會讓它更癢。
+
+## 01/18, Thu.
+
+### 技術
+
+* [Resource Timing API](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API)：瀏覽器用來測量資源載入速度的api，對於資源(如腳本、圖片、css等)的請求，從重導向、dns lookup、tcp交握到response的時間，以及傳輸的流量大小都可以由這個API取得。跨站請求預設無法用這個api取資料，但只要伺服器端在回應標頭加上`Timing-Allow-Origin: *`就同樣能夠得到數值(google、fb等提供的api script都可以測)。對於網速和流量的偵測很有用(例如在網速慢的時候載入較簡單的頁面，足夠快時則載入需要較多資源的完整頁面)。好話說完，可惜的是：
+    
+    * mobile和桌面的Safari到11之前不支援，而且沒有polyfill。
+    * 對於`<video>`、`<audio>`的支援不好，今天實驗發現它得到的流量數值(`PerformanceEntry.transferSize`)沒有隨著載入而變化，而且最後的流量數值也不對，推測應該是因為會分段(buffer)載入的緣故。
+
+    但對於需要作網速偵測的網站仍然是一大福音啦...
+    
+### 有趣的東西
+
+* [網頁版小畫家](http://jspaint.ml/)：嘿，就是小畫家！github在[此](https://github.com/1j01/jspaint)，jquery還是很厲害的啊。
