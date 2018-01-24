@@ -374,4 +374,37 @@ funcA()
 
 * 終於把*Perfect Software: And Other illusions about testing*讀完了(啊，其實我是讀[簡體中文版](https://www.tenlong.com.tw/products/9787121258619)喔)。雖然主要還是從專案經理的角度出發，而且場景更適合用在測試和開發人員分開的大型專案，但是還是從中學到很多概念呢。
 * [那些年我們一起學XSS](https://www.gitbook.com/book/wizardforcel/xss-naxienian/details)：剛好翻到這篇gitbook，用了很多實際的例子講解XSS挺有趣的，最近也想來補一下瀏覽器安全的洞啊。
-* 
+
+## 01/24, Wed.
+
+### 技術
+
+* 讀了[單元測試的藝術](http://www.books.com.tw/products/0010765689)的前兩章(你沒猜錯，手邊又是[匪書](https://book.douban.com/subject/25934516/)了，雖然前面的連結是繁中版，可是匪書早在繁中版的三年前就出了啊QQ)：
+
+    * 單元測試是：
+        * 運行快速(至少幾分鐘內一定可以跑完所有測試)
+        * 針對一個工作單元
+        * 結果穩定，同樣的被測試程式碼必定得到同樣的結果；幾個月前寫的測試仍然可以使用。
+        * 自動化，一鍵可以運行
+        * 獨立於任何的外部依賴(資料庫、伺服器...)
+
+    * 承上，對於工作單元的定義，有些人認為僅止於一個函數或方法；作者認為它也可以是好幾個類別共同組成的一個功能，給出了一個完整的定義：
+        * 從呼叫系統的一個公共API開始，系統經過一系列的行為，產出一個可見的**最終結果**(無關系統的內部狀態)。其間系統所發生的行為稱為一個**工作單元**
+        * 最終結果可以有下列三種形式：
+            * 被呼叫的公共API返回一個值。
+            * 系統的狀態產生了可以由公開的方法或變數觀察到的變化。
+            * 呼叫了一個第三方系統的公共API。
+
+    * 承上上，相對的，如果一個測試跑得慢，牽涉了不穩定的外部依賴，那就不是單元測試，而是**集成測試**(Integration Test)。集成測試同樣重要，但應該和單元測試有所區別。
+    * 作者順道提到了TDD，他認為學習TDD包含了三個部分：
+        * 學習怎麼寫可維護、可讀、可靠的測試 => 讀這本書XD
+        * 學習測試先行的技能 => 作者推 **[Test-Driven Development: by Example](https://www.eecs.yorku.ca/course_archive/2003-04/W/3311/sectionM/case_studies/money/KentBeck_TDD_byexample.pdf)** (但好像也有[簡中](http://www.books.com.tw/products/CN11048298)版)
+        * 學習怎麼設計系統 => 作者推 [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) 和 [Clean Code](https://www.tenlong.com.tw/events/106)
+
+    * 簡單的測試程式，其實我們自己也可以寫，不需要框架；框架是為了：
+        * 自動化運行
+        * 顯示測試結果
+        * 標記測試方法
+        * 斷言函式庫
+        * 測試類別
+
