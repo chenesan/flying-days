@@ -42,3 +42,9 @@ Feb. 2018
         * 收集資訊：也就是上述的填寫表單，同樣，請確認是否真的需要收集這些資訊。
         * 緊急內容：這個緊急對誰而言緊急(用戶/網站/行銷)？什麼時候？一般而言，當網站和用戶站在同一個立場上時，比較可以出於緊急的理由使用modal(例如環境保護的募款、限時的倡議活動...)。
         * 那個，「我們用modal的話可以少設計一個頁面」之類的理由就算了吧。
+
+## 02/04, Sun.
+
+### 技術
+
+* [Let’s make multi-colored icons with SVG symbols and CSS variables](https://medium.freecodecamp.org/lets-make-your-svg-symbol-icons-multi-colored-with-css-variables-cddd1769fca4)：用css variable來達成一組svg多種不同配色的目的。這是icon font做不到的事情之一唷。
