@@ -76,3 +76,20 @@ Feb. 2018
 
 也在思考以我的生活形態，到底應不應該每天都更新呢？如果有辦法，其實還是該每天空出一段時間的，但不管起床或睡前，看來也是得花點工夫呢，人生啊到底該不該這麼累呢(離題)。
 
+## 02/06, Tue.
+
+### 技術
+
+* 回去讀了[Clean Code](http://www.books.com.tw/products/0010579897)的前三章。
+    * 其實大多數的事都是知道的，可是回到實際工作上，還是很容易寫出`accountInfo`這樣的東西啊。
+    * 關於匈牙利命名法(或任何夾帶型別的命名)，因為書中主要以Java/C#等等有靜態型別的語言為主，在想或許Javascript還是可以適用的...啊啊Typescript什麼的...
+    * 倒是，命名有助於搜尋這件事情，好像是在工作一陣子之後才特別有感。沒好好命名的話真的很難找code啊。
+    * 函數要抽象到舒服又看得懂的程度真的好難，現在還是常常劈哩啪啦的寫長長的函數QQ。第三章最後的範例我覺得很漂亮，可是說不定也會有人覺得抽太多了。
+
+### 工作
+
+* [Learning At Work](https://jvns.ca/blog/2017/08/06/learning-at-work/)：昨天才談到一點學習焦慮今天就在codeTengu上看到這篇了呢XD，談了一些在工作中學東西的方法。
+
+### 趣聞
+
+* [IFTTT](https://ifttt.com/)：可以把一堆服務串在一起的東西，還沒玩過但是好像很有趣，詳細一點的介紹看[這篇](https://www.computerworld.com/article/3239304/mobile-wireless/what-is-ifttt-how-to-use-if-this-then-that-services.html)
