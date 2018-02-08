@@ -115,3 +115,27 @@ Feb. 2018
     * 不是所有的東西都要寫成物件。而對於資料結構來說，違反德摩特爾法則則是ok的。
     
 * [Software Complexity Is Killing Us](https://www.simplethread.com/software-complexity-killing-us/?utm_campaign=CodeTengu&utm_medium=email&utm_source=CodeTengu_115)：終究程式設計師的第一要務是創造價值，而不是去處理軟體複雜度(後者只是前者的一個面向)。作者的想法是，大多數的專案其實不需要那麼複雜的工具，而複雜的工具其實變相增加了開發的難度，讓開發者更難實作真正需要被實作的邏輯，開發的速度因此就變慢了。這很可能讓更多需要軟體的人轉向所謂的Low Code Platform，即不需要懂得寫程式，透過拖拉等簡單方式就可以建造軟體的平台。顯然，我們不會想要跟這些平台產生的code打交道，更嚴重的是，一旦平台本身倒了，產生的軟體可能也會跟著倒。仔細想想，前端現在也是愈來愈複雜，但是工作上碰到的需求，目前最多的也還是CRUD，簡單`$.ajax`一下就好的事情啊。先不論只是CRUD究竟能有什麼價值，我們真的有享受到新工具帶來的好處嗎？到底在什麼時候應該用____(可填入redux、react或任何新玩意兒)，什麼時候不需要呢？整體來說，我自己現在還是寫得挺舒服的，但是是該想一想呢。
+
+## 02/08, Thu.
+
+### 技術
+
+* [React, Redux and JavaScript Architecture](https://jrsinclair.com/articles/2018/react-redux-javascript-architecture/)：很有意思的文章，解釋了為什麼(Why, not how)要用React和Redux。作者從一個簡單的toggle實作講起。簡單的說：
+    * 隨著元件的內容和操作增加，元素的變動愈來愈複雜。如果我們只看DOM，我們很難看出來現在的DOM代表UI的什麼狀態，很容易出錯。因此開發者開始希望可以把元件的狀態和DOM的操作分離出來，用元件的狀態(state)來決定現在DOM的樣子(view)。
+    * 然而，如果直接用jquery硬寫狀態代表的html(e.g. `$.html()`)，每次狀態變化都會導致整個DOM tree被重新create，這樣效能很差。一些文章談到React的時候，之所以說「DOM操作很吃效能」，就是在說不能夠重新創建整個元件的所有元素，效能太差。原本最一開始html + jquery的解法，只操作了需要變動的部分，因此沒有效能的問題。
+    * React的virtual DOM解決了這個問題，它透過比較狀態變更前後的virtual DOM tree，只更新有需要更新的節點。(這個比較演算法，根據 [JavaScript’s History and How it Led To ReactJS](https://thenewstack.io/javascripts-history-and-how-it-led-to-reactjs/)的說法，從O(n^3)演變到現今的O(n)，才得以真正用在實際應用。)。因此React的價值，在於讓我們輕鬆的把元件的state從DOM操作中分離出來，又不會因此損耗過多的效能。
+    
+        是說，如果有一天browser可以內建virtual DOM的api的話，說不定React的優勢就沒那麼大了(嗎)
+    * 為了表達在某個狀態下的view，React導入了JSX，讓它寫起來像是原本在寫html一樣。相較於原本html + jquery的寫法，JSX讓我們對元件的描述從imperative變成declarative的風格，不用擔心DOM操作的細節。(說到imperative和declarative的差別，大概就像十分逼近法和x^(1/2)那樣的差異：你會希望計算機可以直接幫你開好根號，而不是自己手動十分逼近法)
+    
+        不過讀到這裡我在想，JSX和其它可以有變數和javascript操作的模板語言(ejs, handlebar...)，除了可以嵌套component之外，其實也沒有差多少...吧?
+
+    * Redux則帶來兩個好處，一則如[You might not need redux](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)所說：
+    
+        > The tradeoff that Redux offers is to add indirection to decouple “what happened” from “how things change”.
+    
+    Redux幫助開發者把「發生了什麼事」(action)給獨立出來，得到一組action的序列，藉此可以做到重現使用者操作、回溯歷史、同步操作等等複雜的app需要的功能。另外一方面它也把「事情該怎麼做」給獨立出來，這讓同一份邏輯(reducer)得以在不同的地方被重複使用。
+    
+    * 另一個Redux帶來的好處，則是它把整個app的state放在一起，藉由react-redux把state丟給component做為props，這減少了原本只有React時必須由最上層的component一路丟props下到底層的麻煩。對於有大量global state會影響局部元件的頁面來說很方便。另外，這也可以讓原本需要據有state的component變為`PureComponent`，render會更快一些。
+    
+    * 不過如果，東西沒有複雜到切出state和view有明顯的好處，那其實可以不用React呢。至於Redux，如果不需要把action特別分離出去，也沒有大量的global state，那其實也是可以不用的。
