@@ -139,3 +139,20 @@ Feb. 2018
     * 另一個Redux帶來的好處，則是它把整個app的state放在一起，藉由react-redux把state丟給component做為props，這減少了原本只有React時必須由最上層的component一路丟props下到底層的麻煩。對於有大量global state會影響局部元件的頁面來說很方便。另外，這也可以讓原本需要據有state的component變為`PureComponent`，render會更快一些。
     
     * 不過如果，東西沒有複雜到切出state和view有明顯的好處，那其實可以不用React呢。至於Redux，如果不需要把action特別分離出去，也沒有大量的global state，那其實也是可以不用的。
+
+## 02/09, Fri.
+
+尾牙，被灌酒，公休一日。
+
+## 02/10, Sat.
+
+### 技術
+
+* [Please stop using Local Storage](https://www.rdegges.com/2018/please-stop-using-local-storage/)：作者叫你別再用localStorage了。
+
+    主要的原因是它對XSS一點辦法也沒有。拜npm之賜，第三方腳本可能從許多你不知道的地方被放到你的app來，我們很難確信裡面沒有任何惡意程式。而一旦假設被XSS了，localStorage的東西就一定會被看光光。偏偏大家開發的時候都會偷懶，往裡面塞使用者身份、信用卡資料、JWT token(被打臉)啦等等，這其實超危險的啊。至於解決的方法嘛，作者則提到session id + cookie + httpOnly的解法，讓browser讀不到cookie，詳細的方法嘛...明天再來今天書展好累XD
+    次要的原因則像是5MB大小上限、同步阻塞、只能塞字串、不能在service worker使用、不能離線使用等等。說到離線讀取資料，作者還提到了IndexDB的cacheAPI，雖然edge和safari還不支援但看起來挺有用的。
+
+### 人蔘
+
+* [Improving Ourselves to death](https://www.newyorker.com/magazine/2018/01/15/improving-ourselves-to-death)：有點長的文章，作者談到對最近這一波科學化的自我提昇(self optimization)風潮的反思，包含追求完美的弊病，以及自我提昇可能並沒有讓人活得更好。雖然作者說的是美國人的情形，我覺得臺灣也慢慢有這樣的風潮，閒著沒事逛逛誠品就知道了。我自己也是會研究一點life hack或者productivity的人，我想它對生活和工作還是有些幫助，不過我想，不必為了更好而更好，回到生活的現場，想要做到的事情自然而然就會浮上來了，那時再來煩惱也不遲。
