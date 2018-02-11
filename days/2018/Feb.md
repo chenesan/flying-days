@@ -156,3 +156,15 @@ Feb. 2018
 ### 人蔘
 
 * [Improving Ourselves to death](https://www.newyorker.com/magazine/2018/01/15/improving-ourselves-to-death)：有點長的文章，作者談到對最近這一波科學化的自我提昇(self optimization)風潮的反思，包含追求完美的弊病，以及自我提昇可能並沒有讓人活得更好。雖然作者說的是美國人的情形，我覺得臺灣也慢慢有這樣的風潮，閒著沒事逛逛誠品就知道了。我自己也是會研究一點life hack或者productivity的人，我想它對生活和工作還是有些幫助，不過我想，不必為了更好而更好，回到生活的現場，想要做到的事情自然而然就會浮上來了，那時再來煩惱也不遲。
+
+## 02/11, Sun.
+
+### 技術
+
+* [Single Page Application Is Not a Silver Bullet](https://blog.bloomca.me/2018/02/04/spa-is-not-silver-bullet.html)：因為SPA的bundle size比起plain html大太多了，多半要佔據好幾百KB甚至MB(gzipped)，而對行動裝置來說compile javascript也很花時間，結果，作者發現他最近改版的網站變成SPA後，反而比原先的版本慢了一倍。
+    當然這可以藉由code splitting減少bundle size得到改善，而且理論上bundle如果沒有變更的話，應該只有第一次連上網站時才需要下載，其後都可以直接用cache的版本。不過即使如此，只要網站夠大(Airbnb、Medium、Twiiter)，通常也有幾百KB起跳的bundle，得花上好幾秒載入。
+    
+* [Protecting Your Cookies: HttpOnly](https://blog.codinghorror.com/protecting-your-cookies-httponly/)：接著昨天的話題。在Set-Cookies header中加上`httpOnly`，javascript就不能夠讀取cookie了。另外昨天的文章還提到了另外兩點：
+    * 加上`secure=true`：只有加密連線才能設cookie
+    * 加上`SameSite=strice`：只有同源網站才能使用cookie，擋CSRF。
+    
