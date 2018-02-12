@@ -168,3 +168,13 @@ Feb. 2018
     * 加上`secure=true`：只有加密連線才能設cookie
     * 加上`SameSite=strice`：只有同源網站才能使用cookie，擋CSRF。
     
+## 02/12, Mon.
+
+### 技術
+
+* 讀了Clean Code的第十四章，看作者怎麼從頭清理一個模組，感覺意會勝於言傳啊(茶)
+* [To serve man with software](https://blog.codinghorror.com/to-serve-man-with-software/)：終究，咱們寫東西還是為人服務，使人過得更好、成為一個更好的人哪。
+
+    是為了人。
+
+    (同場加映：[小printf](https://ferd.ca/the-little-printf.html))
