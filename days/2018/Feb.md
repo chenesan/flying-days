@@ -178,3 +178,10 @@ Feb. 2018
     是為了人。
 
     (同場加映：[小printf](https://ferd.ca/the-little-printf.html))
+
+## 02/13, Tue.
+
+### 技術
+
+* [Simple React Patterns](http://lucasmreis.github.io/blog/simple-react-patterns/)：講了一些React慣用的寫法，即使寫了一年，手法大概都看過，但仍不習慣，例如render props(讓user傳入render函式)、Provider(用context讓所有下層的component可以共享同一份狀態)。
+
