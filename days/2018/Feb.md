@@ -185,3 +185,19 @@ Feb. 2018
 
 * [Simple React Patterns](http://lucasmreis.github.io/blog/simple-react-patterns/)：講了一些React慣用的寫法，即使寫了一年，手法大概都看過，但仍不習慣，例如render props(讓user傳入render函式)、Provider(用context讓所有下層的component可以共享同一份狀態)。
 
+## 02/14, Wed.
+
+### 技術
+
+* *Working Effectively With Legacy Code*：讀了序言和第一章：
+    * 這本書在談的是怎麼**有信心地**修改程式碼。不是談怎麼做出好的設計或好的程式碼。
+    * 根據作者的定義，legacy code指的就是**沒有測試的程式碼**。因為沒有測試，我們就很難安心的修改程式碼，即使程式碼本身再怎麼乾淨、設計再怎麼精簡，只要缺少測試，就不能放心。
+    * 而話說回來，為什麼要修改程式？不外乎四個原因：
+        * 增加feature
+        * bugfix
+        * 改善設計
+        * 優化性能
+    * feature和bugfix的判斷常是主觀的，對需求方是bugfix的事情，對程式設計師而言卻可能是全新的feature。在此，作者提出了從**行為**出發的觀點：如果一個修改增加了新的行為，那就是增加feature；如果一個修改沒有增加新行為，僅修改了舊的行為，那就是bugfix。
+    * 而從修改舊行為這件事情出發，我們注意到，會修改舊行為的只有bugfix，增加feature、改善設計、優化性能的意圖都不會改變既有的行為。而我們做修改時最害怕的，就是破壞既有的良好行為，無意間引入新的bug。因此，我們需要測試。
+
+* [nwb](https://github.com/insin/nwb)：最近在工作上用到它，和 create-react-app一樣，是 starter kit，但也支援 preact、inferno和 vanilla app，還有 [React component](https://github.com/insin/nwb#react-components-and-libraries)。create-react-app個人覺得很適合App，dev server開起來很快，可是也有一些限制，像是沒辦法簡單的import `src`外面的程式碼，非得折騰`eject`不可(如果有簡單的解法拜託請告訴我 QQ)。這對開發library裡面的 demo/dev App來說有點惱人。相較之下 nwb雖然慢一些，測試框架用的還是 karma(目前[好像正在導入jest](https://github.com/insin/nwb/issues/173)，不過手動改一下測試指令也很簡單)，但就沒有這個限制。而且 nwb也搞定了 library的建置指令。覺得如果想開發 react component的 library給別人用的話，目前感覺起來還蠻方便的。
