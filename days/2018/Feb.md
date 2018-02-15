@@ -201,3 +201,9 @@ Feb. 2018
     * 而從修改舊行為這件事情出發，我們注意到，會修改舊行為的只有bugfix，增加feature、改善設計、優化性能的意圖都不會改變既有的行為。而我們做修改時最害怕的，就是破壞既有的良好行為，無意間引入新的bug。因此，我們需要測試。
 
 * [nwb](https://github.com/insin/nwb)：最近在工作上用到它，和 create-react-app一樣，是 starter kit，但也支援 preact、inferno和 vanilla app，還有 [React component](https://github.com/insin/nwb#react-components-and-libraries)。create-react-app個人覺得很適合App，dev server開起來很快，可是也有一些限制，像是沒辦法簡單的import `src`外面的程式碼，非得折騰`eject`不可(如果有簡單的解法拜託請告訴我 QQ)。這對開發library裡面的 demo/dev App來說有點惱人。相較之下 nwb雖然慢一些，測試框架用的還是 karma(目前[好像正在導入jest](https://github.com/insin/nwb/issues/173)，不過手動改一下測試指令也很簡單)，但就沒有這個限制。而且 nwb也搞定了 library的建置指令。覺得如果想開發 react component的 library給別人用的話，目前感覺起來還蠻方便的。
+
+## 02/15, Wed.
+
+### 技術
+
+* [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)是一個執行 npm script/binary的工具，從 npm v5.2.0。以往要執行package中的binary(如mocha、jest、create-react-app)必須要全局安裝，藉由npx我們可以一行執行下載的dev dependency中的binary，或者甚至一行下載package、執行binary、砍掉package，而不需要像以往全局安裝，方便一些。
