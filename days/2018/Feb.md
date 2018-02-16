@@ -207,3 +207,9 @@ Feb. 2018
 ### 技術
 
 * [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)是一個執行 npm script/binary的工具，從 npm v5.2.0。以往要執行package中的binary(如mocha、jest、create-react-app)必須要全局安裝，藉由npx我們可以一行執行下載的dev dependency中的binary，或者甚至一行下載package、執行binary、砍掉package，而不需要像以往全局安裝，方便一些。
+
+## 02/16, Thu.
+
+### 技術
+
+* [用javascript做視差滾動](https://daverupert.com/2018/02/cheapass-parallax/)
