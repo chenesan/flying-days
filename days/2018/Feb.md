@@ -213,3 +213,39 @@ Feb. 2018
 ### 技術
 
 * [用javascript做視差滾動](https://daverupert.com/2018/02/cheapass-parallax/)
+
+## 02/17, Fri.
+
+### 技術
+
+* [The cost of javascript](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e)：一篇很完整的介紹如何優化javascript載入速度的文章。幾個有趣的點：
+    * javascript的載入時間包含兩部分：下載和處理(parse、compile、execution)。
+    * 大家經常輕忽處理javascript所需的時間，同樣大小的圖片和javascript code比起來，後者所需要的處理時間可能會更多。
+    * 下載時間的優化技巧包含： 
+        * 只載入需要的程式碼，包含code splitting、tree shaking、只載入大型library(moment、lodash)的必要部分等等，詳細的trick可以讀[這一篇](https://iamakulov.com/notes/webpack-front-end-size-caching/)。
+        * 最小化，例如uglifyJS。
+        * 壓縮檔案，最少gzipped一下；最近還出現了[Brotli](https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/)，據說檔案大小會比gzip少個幾%甚至1x%，雖然Edge和Safari還不支援這種Encoding，
+        * Cache，包含使用max-age、eTag等等header來告訴瀏覽器何時下載新的檔案。或者，使用filename hashing來確保每次建構的bundle檔名不同。
+    * 處理時間的優化技巧包含：
+        * 只載入需要的程式碼(同上)。
+    * 綜合來說，影響下載時間的是網路環境，而影響處理時間的則是device的運算速度(C/GPU、cache、RAM)。不會只有一個factor，所以，按照網站主要使用者的環境選擇要優化的項目吧(利用google analytic可以知道網站使用者的device的基本資訊)。不過基本上，載入的程式碼愈少愈好就是了。
+    * 幾個有趣的數字：
+        * 市面上最高性能和平均性能的device相比，javascript的載入時間可以相差2x~5x。以CNN為例，在文章當時，iPhone8約需要4秒來載入js，而平均水準的Moto G4則需要13秒；
+        * 文章提供的js parse cost裡面，最快的前三名都是iphone/ipad，其中前兩名都是safari。不過接下來則是macbook on chrome。
+        * [HTTP Archive](http://beta.httparchive.org/reports/state-of-javascript#bytesJs)調查前500000個網站，發現有50%的網站需要14秒使用者才能與之互動，而它們要花4秒的時間來處理javascript。
+    * 最後作者提到一些優化的策略：
+        * [PRPL](https://developers.google.com/web/fundamentals/performance/prpl-pattern/)：原本是PWA裡面的優化策略，但也可以泛指任何的web app：
+            * 送initial route需要的資源
+            * 渲染initial route
+            * pre-cache其它的route
+            * 需要時，再lazy-load/  create其它的route
+        * [Progressive Bootstrapping](https://twitter.com/aerotwist/status/729712502943174657)：
+
+            server side rendering是現在常見的渲染方式，server端先一次把需要的html渲染好，client端再載入所有需要的js，這樣的方法，在html載入到js載入完成之間會有一段時間，用戶雖然能看到view卻無法與之互動。
+            Progressive Bootstrapping指的則是，在一開始的html中只夾帶必要的html、css、javascript，如此使用者可以很快的和頁面互動，其餘的feature則隨後再載入。
+            
+            其實看連結的圖就可以一目了然了XD
+
+    文末還有不少和載入優化相關的其它文章，附帶一提，作者[Addy Osmani](https://addyosmani.com/)也是在web performance這一塊很有名的工程師。
+    
+* [Multi-factor Authentication](https://en.m.wikipedia.org/wiki/Multi-factor_authentication)：雖然是維基文章，但簡要地介紹了MFA的概念，常聽到2FA就是指用到2個元素來做認證的認證步驟。常見的簡訊認證碼，就是利用手機(something user possesses)來強化認證的困難度。
