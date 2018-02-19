@@ -268,3 +268,14 @@ Feb. 2018
         4. Write tests.
         5. Make changes and refactor. 
         這本書剩下的章節要談的，也就是這五個步驟中可能碰到的種種困難及解方(以一種Q&A的形式)。
+        
+## 02/19, Mon.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第三章： *Sensing and Seperation*。
+    * 更仔細的說，需要破除依賴的原因，通常有二：
+        * Sensing：我們希望不透過依賴物就能知道功能運作的結果。
+        * Separation：我們希望不透過依賴物就能建立被測試的物件(或功能)
+    * 這本書大多在談Separation的技巧。而關於Sensing，這一章則介紹了一個技巧：Fake Collaborators。
+        * 針對我們用來知道結果的外部class的行為，建立一個interface；此後我們建立一個fake object的class實作這個interface，使被測試的class可以使用fake object；同時也實作測試程式碼用來得知測試結果的方法，使得測試通過呼叫這些方法來得知單元工作的結果。
