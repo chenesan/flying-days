@@ -293,3 +293,25 @@ Feb. 2018
         * Object Seams：是OOP特有的接縫。利用繼承，我們可以在方法中增加某個父類別的參數，讓外部的方法呼叫者丟不一樣的子類別的實例給被測試的類別使用，而改變方法的行為。
         * 作者建議在通常狀況下使用Object Seams，因為前兩者較難搞懂/維護。然而在很難增加Object Seams的狀況下，有時也可以考慮Preprocessing/Link Seams
     * 不過因為這本書主要使用的是靜態型別的語言。在Python或Javascript之類的語言中，可以直接在測試時替換掉實例的屬性，變得可以在執行期間改變程式行為，使得寫測試變得簡單許多。這個論點在單元測試的藝術也有提到：究竟動態語言如Ruby、Python、Javascript到底應不應該考慮可測試性的設計？作者覺得既然它們都可以直接在執行期改變行為，使得寫測試變得簡單，或許就可以不用在乎可測試性設計了。
+
+## 02/21, Wed.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第五章： *Tools*。
+    * 這一章介紹幫助我們寫測試的工具；雖然都是十年前的東西，有些還是我不知道的：
+        * Automated Refactoring Tools：用來自動重構
+        * Mock Objects：就是Mock Objects
+        * xUnit Frameworks：就是xUnit
+        * FIT(Framework for Integerated Test)/Fitnesse：用於整合/驗收測試的工具。測試者可以透過在FIT的wiki系統上編輯表格，來表達測試和期待的結果；FIT會自動將表格轉換成測試條件，丟給程式設計師寫好的fixture來執行測試，測試的結果會自動更新到wiki的表格中。不過，為什麼前端開發幾乎看不到這種工具呢？
+
+* [這一篇](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)：作者主張render prop的寫法可以完全取代High order component的寫法，基本論點如下：
+    * 為了共用component的邏輯，在React剛出來(with es5)的時候，大家都是使用mixin + `React.createClass`的寫法。
+    * 後來es6出現了，js終於可以原生支持class了(雖然是語法糖)，React也推出class component來替代原本的`createClass`。但問題來了，es6的class不支援mixin的寫法...
+    * 所以HOC就出現了
+    * 但是HOC和mixin在作者眼中都有同樣的缺點：
+        1. mixin插入了修改state的邏輯；而HOC把props丟到原本不認識這些props的component裡。兩者都會讓我們看不出這些多出來的state/props，究竟是來自我們自己的邏輯，或是從mixin/HOC加進來的。
+        2. 命名衝突，只要被包起來的component有同名的state/props就會吃土。
+        3. 必須讓包起來的新component行為和舊的一樣，所以要pass不少重複的props，也可能產生bug。
+
+    * 而render props的寫法沒有上述的三個問題，因此作者主張當你想要寫HOC的時候，用render props。
