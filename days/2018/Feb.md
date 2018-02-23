@@ -330,3 +330,39 @@ Feb. 2018
         * *Wrap Class*：類似於Wrap Method，但是是用新的類別包住舊的類別，新的類別中提供和舊的類別一樣的界面。decorator pattern就是Wrap Class的實作模式之一。
     * 這些改寫的方法在初步可能顯得太過麻煩，尤其是在既有的類別責任很多的時候，額外為一個小功能做Wrap Class看起來簡直像在做白工。但作者也提到，程式碼的改善，通常都是由一點一點的小改動累積起來的。所以作者還是建議我們勇敢的去做這些改善。
     * 但我覺得這裡作者談的其實都是「在不動到舊行為的狀況下，增加新行為」，而不是「修改舊行為」，有些時候，你就是要直接修改舊的行為，這些方法是否能幫上忙，就要打個問號了。
+
+## 02/23, Fri.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第八章： *How do I Add A Feature?*。
+    第六章出現了好幾次對第八章的引用，所以就先跳過來看這一章。這章想說的就是怎麼加入新的行為；只有兩個重點，一個是TDD，一個是Programming By Difference。
+    * TDD的部分相信前面看了那麼多筆記大概也很熟悉了(?)所以就不贅述XD總之，不管是修改既有行為或增加新行為，作者認為TDD是很好的實踐。
+    * Programming By Difference則是指用繼承實作新的feature。倘若舊的類別需要長出新的行為，就創造一個新的類別繼承舊的類別並且override原本的方法。好處是寫起來足夠無腦，壞處則是繼承多了容易搞不清楚哪個類別才是幹實事的。
+    * 在此作者也提到里氏替換法則(Liskov Substitution Principle)，指的是說，一個子類別的實例應該可以被一個父類別的實例所替換，或者說，任何子類別的實例都應該可以當成父類別的實例使用。作者舉了一個反例：
+
+        ```java
+        public class Rectangle {
+            setWidth() { ... }
+            setHeight() { ... }
+        }
+        
+        public class Square extends Rectangle {
+            setWidth() { ... }
+            setHeight() { ... }
+        }
+        
+        Rectangle r = new Square()
+        r.setWidth(3)
+        r.setHeight(4)
+        ```
+        問題來了，`Square`的`setWidth`方法究竟應不應該改變`height`呢？如果為了維持正方形的定義而改變，使用者就會覺得很奇怪，為什麼`setWidth`會影響`height`呢？但如果不改變高度，它就再也不是個正方形了。所以，這裡`Square`的繼承就違反了里氏替換原則。
+        
+        兩個原則：
+        
+        1. 不要改寫concrete method
+        2. 如果你改寫了，盡可能呼叫被改寫的方法
+    
+        或者，就乾脆把父類別改成抽象類別，把要改寫的方法改成抽象方法，concrete method一概都交由子類別去實作，作者稱這樣的繼承體系為 normalized hierarchy。這樣的好處是可以直接看出來某個類別的某個方法做了什麼：要嘛它是抽象方法，要嘛它就是實作。
+* [Precedence in CSS (When Order of CSS Matters)](https://css-tricks.com/precedence-css-order-css-matters/)：今天才知道原來當兩個 css 選擇器權重一樣的時候，會依照它在 html 中出現的順序來決定那個樣式最後會生效(掩面，這好像是早該知道的事)。為什麼會發現這件事呢？因為今天工作的時候我嘗試修理 開了 [critical](https://github.com/addyosmani/critical)
+ 之後，頁面會閃動的問題，結果發現 critical output 出來的 css 竟然和原本的 css 順序不一樣，導致本來寫在後面的媒體查詢被前面的樣式覆蓋掉...很奇怪的是 critcal 用[penthouse](https://github.com/pocketjoso/penthouse)來產生 critical css ，但是我在 penthouse 的[線上產生器](https://jonassebastianohlsson.com/criticalpathcssgenerator/)生出來的 critical css 順序卻是正確的。目前還是沒有好解法...
