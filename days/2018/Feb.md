@@ -336,6 +336,7 @@ Feb. 2018
 ### 技術
 
 * *Working Effectively With Legacy Code* 第八章： *How do I Add A Feature?*。
+
     第六章出現了好幾次對第八章的引用，所以就先跳過來看這一章。這章想說的就是怎麼加入新的行為；只有兩個重點，一個是TDD，一個是Programming By Difference。
     * TDD的部分相信前面看了那麼多筆記大概也很熟悉了(?)所以就不贅述XD總之，不管是修改既有行為或增加新行為，作者認為TDD是很好的實踐。
     * Programming By Difference則是指用繼承實作新的feature。倘若舊的類別需要長出新的行為，就創造一個新的類別繼承舊的類別並且override原本的方法。好處是寫起來足夠無腦，壞處則是繼承多了容易搞不清楚哪個類別才是幹實事的。
@@ -366,3 +367,21 @@ Feb. 2018
         或者，就乾脆把父類別改成抽象類別，把要改寫的方法改成抽象方法，concrete method一概都交由子類別去實作，作者稱這樣的繼承體系為 normalized hierarchy。這樣的好處是可以直接看出來某個類別的某個方法做了什麼：要嘛它是抽象方法，要嘛它就是實作。
 * [Precedence in CSS (When Order of CSS Matters)](https://css-tricks.com/precedence-css-order-css-matters/)：今天才知道原來當兩個 css 選擇器權重一樣的時候，會依照它在 html 中出現的順序來決定那個樣式最後會生效(掩面，這好像是早該知道的事)。為什麼會發現這件事呢？因為今天工作的時候我嘗試修理 開了 [critical](https://github.com/addyosmani/critical)
  之後，頁面會閃動的問題，結果發現 critical output 出來的 css 竟然和原本的 css 順序不一樣，導致本來寫在後面的媒體查詢被前面的樣式覆蓋掉...很奇怪的是 critcal 用[penthouse](https://github.com/pocketjoso/penthouse)來產生 critical css ，但是我在 penthouse 的[線上產生器](https://jonassebastianohlsson.com/criticalpathcssgenerator/)生出來的 critical css 順序卻是正確的。目前還是沒有好解法...
+
+## 02/24, Sat.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第七章： *It takes forever to make a change*。
+
+    * 這章講到，改程式碼為什麼會花那麼多時間。作者提到三個困難：
+
+        1. 理解困難
+        2. 編譯時間過長
+        3. 破除依賴困難
+        
+        本書其餘章節都談到了這些困難的不同面向的解法。
+    * 本章的後半部分作者也提到如何透過將界面和實作分開來避免因實作變更而造成的重新編譯，如此可以緩解編譯時間過長的問題。另外這也符合依賴倒置原則(Dependency Inversion Principle)：
+        * 較高階層的模組不應依賴於低階層的模組；兩者都應依賴於抽象
+        * 抽象不應依賴於實作細節，而實作細節應依賴於抽象
+        * 總之就是依照interface辦事啊。
