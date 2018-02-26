@@ -413,3 +413,16 @@ Feb. 2018
             2. *Supersede Instance Variable*：額外寫一個setter讓我們可以傳入新的實例取代生成的實例。
     * 其餘的還沒讀完，明天待續(?)
         
+## 02/26, Mon.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第九章： *I can't get this clas into test harness*。
+
+    * 繼續昨天未完的：
+    * *Irritating Global Dependency*：指建構子或方法中用到全局物件的狀況。通常是因為用了 singleton pattern 的緣故。
+    * 解決方法：
+        1. *Introduce Static Setter*：創建一個靜態的setter，允許傳入這個單例類別的實例來設定現在的實例。
+        2. 放寬單例模式的private constructor，改成protect或public。
+        3. 繼承該依賴的類別，如此便可以在測試中生成該物件並丟進1的static setter來滿足依賴。
+* [itemtype](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemtype)：今天才知道的html attribute，用來標記結構化資料，可以幫助搜尋引擎抓取資訊，例如商品、電影評分、文章等等。標記的格式按照 [schema.org] (http://schema.org/) 。
