@@ -390,7 +390,7 @@ Feb. 2018
 
 ### 技術
 
-* *Working Effectively With Legacy Code* 第九章： *I can't get this clas into test harness*。
+* *Working Effectively With Legacy Code* 第九章： *I can't get this class into test harness*。
 
     * 這一章在講，當沒有辦法把被測類的類別加到測試裡面的時候該怎麼辦。可能碰到的困難大致分成四個：
 
@@ -417,7 +417,7 @@ Feb. 2018
 
 ### 技術
 
-* *Working Effectively With Legacy Code* 第九章： *I can't get this clas into test harness*。
+* *Working Effectively With Legacy Code* 第九章： *I can't get this class into test harness*。
 
     * 繼續昨天未完的：
     * *Irritating Global Dependency*：指建構子或方法中用到全局物件的狀況。通常是因為用了 singleton pattern 的緣故。
@@ -426,3 +426,24 @@ Feb. 2018
         2. 放寬單例模式的private constructor，改成protect或public。
         3. 繼承該依賴的類別，如此便可以在測試中生成該物件並丟進1的static setter來滿足依賴。
 * [itemtype](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemtype)：今天才知道的html attribute，用來標記結構化資料，可以幫助搜尋引擎抓取資訊，例如商品、電影評分、文章等等。標記的格式按照 [schema.org] (http://schema.org/) 。
+
+## 02/27, Tue.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第九章： *I can't get this class into test harness*。
+    
+    ...這章讀了三天啊(茶)
+    
+    * *Horrible Include Dependencies*：指在C++裡面因為缺少include dependency而無法測試。此時可以額外自已寫好測試用的定義來填補缺少而用不到的定義。
+    * *Onion Parameter* 和 *Aliased Paramter* 則比較像是案例分析(?)就不特別多寫了。
+
+    * 結果還是偷懶嘛 XD
+* *Working Effectively With Legacy Code* 第十章： *I can't get this class into test harness*。
+    * 類似上一章，只是我們現在卡在方法上。原因同樣的是那幾個：參數建構、副作用、private方法、需要方法內用到的物件來做sensing。
+    * *Hidden Method*：就是私有方法啦。[單元測試的藝術](http://artofunittesting.com/)很直白的叫你不要測，或者應該思考它在設計上是不是該是一個公有方法；而這裡作者一開始也建議透過公有方法來做測試，但是不同的是他更認為為了測試的緣故，可以
+    * 把原本私有的方法搬到另一個類別設為公有，再讓原本的類別使用這個新類別。
+    * 把私有方法變成protected；再創造一個子類別，在這個子類別中設置一個公有方法來呼叫原本的私有方法，對這個公有方法做測試。
+    * *"Helpful" Language Feature*：這裡談到C#特有的語言特性怎麼帶來問題，先放著。
+    * *Undetectable Side Effect*：談到怎麼樣測方法裡面的side effect。作者使用了 [Command/Query Separation](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation)的技巧，把原本一大塊的方法按照切成數個command和query，再使用*Subclass and Override Method*的技巧替換原本不能直接測的第三方物件。
+
