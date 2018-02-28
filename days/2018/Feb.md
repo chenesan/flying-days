@@ -447,3 +447,21 @@ Feb. 2018
     * *"Helpful" Language Feature*：這裡談到C#特有的語言特性怎麼帶來問題，先放著。
     * *Undetectable Side Effect*：談到怎麼樣測方法裡面的side effect。作者使用了 [Command/Query Separation](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation)的技巧，把原本一大塊的方法按照切成數個command和query，再使用*Subclass and Override Method*的技巧替換原本不能直接測的第三方物件。
 
+## 02/28, Wed.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第十一章： *I need to make a change. What methods should I Test?*。
+
+    * 這章在講我們怎麼知道改變程式碼之後，它改變了系統的哪些部分 (Reasoning about effects) 。
+    * Effect sketch 可以幫助我們看出變數和方法如何影響彼此。通常，整潔的系統比起凌亂的系統有更加簡單清楚的 effect sketch。
+    ![Effect sketch](http://www.markhneedham.com/blog/wp-content/uploads/2009/11/unity.png)
+    * 作者在本章中給了幾個 effect analysis 的實際例子。最後談到了一組檢視effects的checklist：
+        1. 辨識出要改變的方法
+        2. 如果改變的方法有回傳值，檢查caller
+        3. 如果改變的方法有改變值，檢查會使用這些值的方法，以及使用這些方法的方法
+        4. 確定沒有漏掉父或子類別，它們可能也會用到改變的方法或值
+        5. 檢查參數是否可能在方法中被改變，如果有，檢查使用這些傳入的變數的方法。
+        6. 檢查全局和靜態變數；檢查使用這些變數的方法。
+    * 當我們減少了 effect 的來源時，通常程式會變得更容易理解，因為我們可以只了解程式的一小部分就知道會發生什麼事，而不必多做其它考慮(設定參數值、全局/靜態變數)。作者認為這也是函數式語言如 Scheme、Haskell的優勢。
+    * 從 effect 的角度來說，作者主張，封裝 (encapsulation) 的目的是為了讓程式碼更容易理解，它是工具，而不是目的。在有良好封裝的程式碼中，理解它所需要經過的路徑更少，代表effect的來源更少。本書介紹的破除依賴的技巧中，有許多都破壞了封裝，例如 *Parameterize Constructor* 。有些人認為不該為測試破壞封裝，但作者認為，如果封裝的目的是為了更容易理解程式碼，那麼，讓類別變得可以測試，使得類別有一份可依靠的測試，而能夠用這份測試來理解程式碼，也是增加了程式碼的可理解性。因此，作者認為如果在可測試性和封裝中二選一 (雖然這兩者並非總是對立)，他會選擇前者，因為通常測試最後能帶來更好的封裝。
