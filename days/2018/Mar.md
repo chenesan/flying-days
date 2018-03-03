@@ -16,7 +16,7 @@ Mar. 2018
 
 ### 技術
 
-* *Working Effectively With Legacy Code* 第十二章： *I need to   make a change, but I don't know what tests to write.*。
+* *Working Effectively With Legacy Code* 第十三章： *I need to   make a change, but I don't know what tests to write.*。
     * 嗯好，所以要測什麼？
     * 一般而言我們想到測試的用途會想到**找出bug**，但作者認為測試更重要的用途是**保留行為**。
     * 一旦有了一組保留系統行為的測試，將來它就可以幫你偵測對程式碼的改變是不是有錯誤，這可以省下很多時間和錯誤。
@@ -32,3 +32,29 @@ Mar. 2018
         如此你就可以得到一組測試，描述系統現在的行為。如果在中間的過程發現bug也沒關係，先把行為保留下來，因為可能有其它人依賴bug的行為。
     * 有了characterization test之後，便可以開始做你想做的修改，此時可以一邊確保是否所有的conversion(if/else)都被這組測試測到。一組好的characterization test應該會包含同一條程式路徑的不同分支。
  
+## 03/03, Sat.
+ 
+### 技術
+
+* PWA
+    * 就是希望網站用起來像原生App一樣，包含一些特性：
+        * 可離線使用
+        * 背景同步，在離線時送出的資料可於連線恢復後自動送出
+        * 全螢幕使用，splash screen，沒有url bar
+        * 可推送通知
+    * 之所以能做到PWA，要仰賴service worker api。service worker是一個在背景下運行的javascript線程，它在網頁被載入時被安裝，其後在每次進入該url時都會啟動，可以做的事情包括：
+        * 控制cache和request。在每次頁面要丟出新的請求時，都可以決定要不要用cache代替。因此可以做到離線使用。
+        * 推送通知
+        * 背景同步
+* *Working Effectively With Legacy Code* 第十四章：*Dependencies on libraries are killing me.*
+* *Working Effectively With Legacy Code* 第十五章：*My application is all API calls.*
+    * 這兩章或許該合在一起看？總之，API或library都是我們改不了的東西，作者提到兩個對使用API的程式碼寫測試的策略：
+
+        1. Skin and Wrap the API：指在API外面增加一層wrapper，wrapper，這層wrapper可以在生產環境呼叫API，在測試環境呼叫fake object。通常在API較簡單而且可以輕易製造API的fake object的場景使用。
+        2. Responsibility-Based Extraction：指針對使用API的程式碼，切出職責並抽出類別。通常在API較複雜而且不易製作fake object時使用。
+* *Working Effectively With Legacy Code* 第十六章：*I don't understand the code enough to change it.*
+    * 介紹了一些trace code的方法。但其實也就是：
+        * 畫圖，不一定要是UML，但它可以幫助你觀察和溝通。
+        * 把程式列印出來(列印!)，在上面做標示，例如當你想切類別的職責時，就可以用奇異筆把屬於某一個職責的方法標出來；或者，函式很長的時候，可以把函式的每個片段標示出來，有助理解。
+        * Scratch Refactoring，反正有git，你可以試著不管測試先重構看看，重構的過程可以增加理解。
+        * 去掉dead code，減少理解的阻力。反正有git。
