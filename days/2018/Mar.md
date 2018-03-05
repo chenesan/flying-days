@@ -82,3 +82,27 @@ Mar. 2018
         * 不過我想就是兩點：(1)不要和原本要測的類別混淆(2)好找
     * 放在哪裡？
         * 作者的建議是放在和production code同一個資料夾，省去在資料夾中翻來找去的麻煩。如果在生產環境下需要去除測試程式碼，透過好的命名規範可以直接寫腳本在建置時去掉。
+
+## 03/05, Mon.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第十九章：*My project is not object oriented. How do I make safe changes?*
+    * 這章介紹了一些沒有Object seam下可以用的hack。包含macro、function pointer等等。
+    * 比較有趣的是最後作者提到，整個procedural program其實就是一個大object包含著很多個public method，再加上一個main function開頭：
+
+    ```c++
+    class program
+    {
+        public:
+        /*
+            any function used in procedural program
+        */
+    }
+    int main(int ac, char **av) {
+    program the_program
+    return the_program.main()
+    }
+    ```
+    
+    
