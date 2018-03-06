@@ -105,4 +105,29 @@ Mar. 2018
     }
     ```
     
-    
+## 03/06, Tue.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第二十章：*This class is too big and I don't want it to get any bigger.*
+    * 這一章談怎麼把巨大的類別切細。
+    * 但首先，為什麼要這麼做呢？
+        * 難讀。難以判斷effect。
+        * 不易同時工作。
+        * 封裝了太多東西，以致於被包起來的私有方法難以測試。
+    * 如果我現在沒有時間...
+        * Sprout Class/Method
+    * 好吧，我有時間了，可是，要切到多細呢？
+        * Single Responsibility Principle 
+    * 有道理，可是職責是很模糊的東西，我要怎麼知道這個類別有哪些職責？
+        1. Method Grouping: 把類別的所有方法攤開來，寫下它們的名字和類型(public/private/protected)，試著從方法名找出看起來較有關聯的方法。
+        2. Looking for Hidden Methods: 觀察private/protected methods；如果一個類別有很多私有方法，通常它們可以被抽取成新的類別。
+        3. Looking for Decisions that can change: 有時候單靠方法名不易判斷職責，方法可能太長，包含了數個不同的操作(decisions)。把它們分別抽取成新的方法，為它們命名，回頭來看通常可以得到不同的觀點。
+        4. Looking for Internal Relationships: 從成員變數的角度出發，觀察每一個成員變數在哪些方法中被用到。可以為它們畫圖––為每一個成員變數和方法畫一個圓，畫箭頭讓成員變數指向它們被使用的方法，從這樣的圖可以看出成員變數和方法的關聯，通常聚在一起的變數和方法就可能是潛在的新類別。
+        5. Looking for Primary Responsibility：試著用一句話描述類別的職責。這可以幫助你決定最重要的職責，找出其它可以抽取出來的職責。
+        6. 如果上述的每一招都不行，試著做Scratch Refactoring。
+        7. 回頭想想現在要做的修改是什麼；而它和職責有什麼關係？
+        8. 回家念書、讀其它人的程式碼，看過愈多好的設計就愈知道可以怎麼做會比較好。
+    * 好像很多招，可是實際上這樣的重構應該很危險吧？
+        * 不一定要把所有的職責都切出來；只取需要的部分便可。
+        * 萬一缺少測試，作者另外在書中也介紹了把方法和變數移到新類別的步驟。
