@@ -131,3 +131,54 @@ Mar. 2018
     * 好像很多招，可是實際上這樣的重構應該很危險吧？
         * 不一定要把所有的職責都切出來；只取需要的部分便可。
         * 萬一缺少測試，作者另外在書中也介紹了把方法和變數移到新類別的步驟。
+
+## 03/07, Wed.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第二十一章：*I'm changing the same code all over the place.*
+    * 整章談到了去除duplication code的一個例子，一些心得：
+        * 如果不知道從哪裡下手，先從看起來較小的、簡單的部分開始。其餘的頭緒會自然出現。
+        * 如果兩個方法看起來大致是相同的，把不一樣的部分分別抽取出來，往往可以把兩個方法合而為一。
+        * 當我們去除了重複程式碼之後，往往可以得到一群小而專注在一件事上的方法/類別，每一個所做的事情都不是其它方法做的，需要修改行為時，往往只有一個地方需要修改：這就是程式中的正交性(orthogonality). 
+* [第三方CSS也很危險啦](https://jakearchibald.com/2018/third-party-css-is-not-safe/)： 可以偷密碼、追蹤瀏覽路徑、改畫面、讀網頁內容(透過`@font-face`)...真的還是自己來啊。
+* [一些css的雜技](https://medium.com/@peedutuisk/lesser-known-css-quirks-oddities-and-advanced-tips-css-is-awesome-8ee3d16295bb)：其實很多都有看過啦。列舉幾個比較神祕/沒看過的：
+    * margin不是什麼時候都會collapse。
+    * `:target`可以選擇經由hash被導航到的元素
+    * `content`除了文字還可以塞圖(`url`)、quote、counter
+    * *lobotomized owl*：
+
+    ```css
+    // before
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    li:last-child {
+        margin-bottom: 0;
+    }
+
+    // after
+
+    li + li {
+        margin-bottom: 10px;
+    }
+    ```
+    可愛又強大(欸)
+* [7 Practical Tips for Cheating at Design](https://medium.com/refactoring-ui/7-practical-tips-for-cheating-at-design-40c736799886)：覺得這篇對設計不太行的前端如我簡直是福音啊QAQQ介紹了很多有用的懶人設計小知識(?)
+    * 製造階層除了字的大小，還可以使用字重和深淺。字重盡可能不要低於400，太輕的字在小size的狀況下看不清楚。
+    * 如果背景有顏色，不要用灰色的字。如果背景是白色的，用灰的字色可以有效的減少對比；非白色的背景則有兩招：
+        1. 使用透明度較高(opacity稍低)的白色字
+        2. 使用和背景色相近的字色
+    * 如果有用到陰影，記得加入垂直的offset讓它看起來符合自然的光影(從上到下)
+    * 如果想製造區塊的間隔，不要全部都用border，還可以用：
+        * box-shadow
+        * 不同的背景色
+        * 增加區塊間的間距
+    * 如果你需要使用放大的icon，不要直接把font-awesome的icon拿來放大，因為它們通常是在16~24px的尺寸下繪製的，若用在3x以上的大小，就會顯得細節不足、空空的。如果需要大的icon，建議可以用個形狀把小icon包起來，或者有錢的話直接使用[Heroicons](http://www.heroicons.com/)或[iconic](https://useiconic.com/)這一類可以在較大尺寸下使用的icon package。
+    * 如果區塊的設計有點平淡，可以加上一段顏色相近的單邊border，看起來會比較有設計感。
+    * 不是所有的按鈕都要用背景色(刪除就用大紅背景白字按鈕、新增就用大綠背景白字按鈕、bootstrap萬歲！(被打))。依照使用介面中動作的階層，可以把按鈕分成三級：
+        * 最重要的動作對應的按鈕應該最明顯，實心、高對比。
+        * 次重要的動作對應的按鈕仍應該清楚但不需要特別強調，稍低一點的對比、白底有色邊框都是好選擇。
+        * 最後較不重要的動作則應該可以被發現到，但不應吸引注意，一般的連結樣式通常足矣。
