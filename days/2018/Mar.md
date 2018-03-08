@@ -182,3 +182,9 @@ Mar. 2018
         * 最重要的動作對應的按鈕應該最明顯，實心、高對比。
         * 次重要的動作對應的按鈕仍應該清楚但不需要特別強調，稍低一點的對比、白底有色邊框都是好選擇。
         * 最後較不重要的動作則應該可以被發現到，但不應吸引注意，一般的連結樣式通常足矣。
+
+## 03/08, Thu.
+
+### 技術
+
+* 嘗試找找看javascript的自動重構工具，卻好像找不太到。open source中最接近的應該是[這個](https://github.com/cmstead/js-refactor)，不過是在VSCode上的插件，atom上雖然有同一個作者做的插件，但是用上去常常跑出錯誤...倒是看到WebStorm有[支援](https://www.jetbrains.com/help/webstorm/refactoring-javascript.html)，有點想玩玩看啊啊。
