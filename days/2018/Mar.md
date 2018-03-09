@@ -188,3 +188,9 @@ Mar. 2018
 ### 技術
 
 * 嘗試找找看javascript的自動重構工具，卻好像找不太到。open source中最接近的應該是[這個](https://github.com/cmstead/js-refactor)，不過是在VSCode上的插件，atom上雖然有同一個作者做的插件，但是用上去常常跑出錯誤...倒是看到WebStorm有[支援](https://www.jetbrains.com/help/webstorm/refactoring-javascript.html)，有點想玩玩看啊啊。
+
+## 03/09, Fri.
+
+### 技術
+
+* 終於把*Working Effectively With Legacy Code*的前兩個部分看完了，可是今天好累所以筆記和心得什麼的就交給明天了(欸)。
