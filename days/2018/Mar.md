@@ -194,3 +194,68 @@ Mar. 2018
 ### 技術
 
 * 終於把*Working Effectively With Legacy Code*的前兩個部分看完了，可是今天好累所以筆記和心得什麼的就交給明天了(欸)。
+
+## 03/10, Sat.
+
+### 技術
+
+* *Working Effectively With Legacy Code* 第二十二章：*I need to change a monster method and I can't write tests for it.*
+    * 因為為大型函式寫測試很困難，因此這章介紹了清理大型函式的一些方法。
+    * 作者將大型函式分為兩種類型：
+        * Bulleted Method: 指沒有太深的語句嵌套和縮進，程式碼看起來像一段一段的列表，每一段做的事情可能都不一樣。
+        * Snarled Mehtod: 指只有單一個很深的嵌套、複雜的縮進。
+        * 實際上的大型函式總是在這兩者之間。就是往直的長或往橫的長呢。
+    * 作者建議在重構大型函式的時候使用自動化的重構工具來幫助抽取函式。手動容易犯錯，諸如忘記把變數丟進被抽取的方法、不小心override原本有的方法、搞錯signature等等。(但是如前天搜尋的結論，實在找不到javascript的呢...)
+    * 真的不得不手動的話，作者還是介紹了一些技巧：
+        * Introduce Sensing Variable: 在要編輯的方法中，加入一個變數來偵測方法是不是正確的行為，並且把這個變數設為類別的公有成員。這樣我們就可以在測試中用它來判斷行為是不是被保留，於是可以安心的搬移邏輯。
+        * Extract what you know: 從簡單的、小的地方開始，作者引入了coupling count的概念，coupling count是指被抽取的方法中，輸入和輸出的數量總和。例如：
+        
+            ```javascript
+        function max(a, b) {
+            return (a > b) ? a : b
+        }
+            ```
+
+            這個方法的coupling count就是3(兩個參數 + 一個回傳值)。作者建議從coupling count很小的地方開始，特別是那些coupling count = 0的部分。通常這些地方都是一些command，我們可以安心地搬移邏輯而不用擔心值的傳遞。
+        * Gleaning Dependencies: 即使有時要抽取的邏輯都纏在一起，太過龐大，無法完全測試，但你仍然可以測試其中一小部分可以測試的邏輯，至少可以確保在抽取之後，行為沒有變化。
+        * Break out a method object: 把方法包在一個新的類別裡面，邏輯抽取到唯一的`run`方法中，原本方法的參數變為建構子的參數，中間變數則作為成員變數，舊的類別在方法中就只負責建構這個新類別並執行`run`。這樣的好處是可以直接針對新類別作測試和重構。
+    * 最後作者提到了一些建議
+        * Skeletonizing vs Finding Sequence：假設有這麼一段邏輯：
+
+            ```javascript
+            if (year < 6 || year > 65) {
+                var ticket = new discountTicket(mileage)
+                bank.sendTicket()
+            }
+            ```
+            Skeletonizing指的就是分別抽取條件句和內容的程式碼，讓它變成：
+            
+            ```javascript
+            if (isDiscountTicket(year)) {
+                sendDiscountTicket(bank, mileage)
+            }
+            ```
+            而Finding Sequence則是直接把整個if語句抽取成一個方法：
+            
+            ```javascript
+            sendDiscountTicket(bank, year, mileage)
+            function sendDscountTicket(bank, year, mileage) {
+                if (year < 6 || year > 65) {
+                    var ticket = new discountTicket(mileage)
+                    bank.sendTicket()
+                }
+            }
+            ```
+
+            我們在重構時往往會在這兩種結構間取捨。
+        * 抽取出來的方法總是可以在之後放到新的類別裡，因此在完全重構完之前，不妨先把它留在原本的類別裡。
+        * 從小的地方開始(跳針)
+        * 做好可能會重新重構的心理準備。這不代表一開始的重構是無用功；它們引導你看出更好的架構。
+* *Working Effectively with Legacy Code* 第二十三章：*How do I know that I'm not breaking anything?*
+    * 這章介紹了一些在寫程式時減少犯錯的方法。
+    * Hyperware Editing: 盡量在能夠得到反饋的狀況下寫程式，例如存檔後自動化測試，盡可能清楚知道此刻做的改動會影響的所有事情。作者甚至提倡在每一次按下按鍵時就執行測試。
+    * Single-Goal Editing: 指修改程式碼時一次只做一件事。不因為做了某件事的中途發現有其它事要做就跳去做別的。
+    * Preserve Signature: 在搬移程式碼邏輯的時候，保留函式的變數聲明，如此可以確保搬過去的程式碼不會漏掉原本的東西。
+    * Lean on the Compiler: 在做修改的時候，有時我們不確定這個修改會影響多少地方要跟著變動。此時可以先直接修改，讓編譯器報錯，如此可以看到所有需要跟著做修改的地方。但要小心被繼承的override method雷到。
+* *Working Effectively with Legacy Code* 第二十四章：*We feel overwhelmed. It isn't going to get any better.*
+    * 雞湯文XD不過總之，和人的連結(無論是工作伙伴或是社群)是背後的動力呢。
