@@ -259,3 +259,7 @@ Mar. 2018
     * Lean on the Compiler: 在做修改的時候，有時我們不確定這個修改會影響多少地方要跟著變動。此時可以先直接修改，讓編譯器報錯，如此可以看到所有需要跟著做修改的地方。但要小心被繼承的override method雷到。
 * *Working Effectively with Legacy Code* 第二十四章：*We feel overwhelmed. It isn't going to get any better.*
     * 雞湯文XD不過總之，和人的連結(無論是工作伙伴或是社群)是背後的動力呢。
+
+## 03/11, Sun.
+
+本日休刊。今天懶洋洋的不想做事(欸)
