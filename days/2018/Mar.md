@@ -263,3 +263,37 @@ Mar. 2018
 ## 03/11, Sun.
 
 本日休刊。今天懶洋洋的不想做事(欸)
+
+## 03/12, Mon.
+
+### 技術
+
+* *[黑客攻防技術寶典：瀏覽器實戰篇](http://www.books.com.tw/products/CN11386118) ([The Browser Hacker's Handbook](https://www.amazon.com/Browser-Hackers-Handbook-Wade-Alcorn/dp/1118662091))*：因為對前端的資安沒什麼概念，於是就開始啃這本啦。
+    * 對瀏覽器的攻擊過程分成三個階段：初始化、持久化、攻擊。
+        * 初始化指的是讓瀏覽器遇見並運行攻擊的程式碼。
+        * 持久化指的是保持對瀏覽器的控制，並嘗試進行進一步的攻擊。
+        * 攻擊則包含好幾種可能：
+            * 繞過同源政策，這也是其它攻擊手段仰賴的一部分。
+            * 攻擊網路(TCP層以下)
+            * 攻擊插件(Adobe Reader、Flash、Java)
+            * 攻擊擴充功能(extension)
+            * 攻擊用戶
+            * 攻擊Web應用
+            * 攻擊瀏覽器
+
+    * 一些廣為流傳的原則實際上是沒有用的：
+        * 健壯性法則(伯斯塔爾法則(Postel's law))：發送時要保守、接收時要開放：但實際上接收時開放就是帶來更多風險。
+        * 外圍安全防線謬論：假設攻擊者是由外而內攻破防線；實際上，瀏覽器提供了很多洞，不可能由外而內的防護。
+
+    * 瀏覽器本身其實也有做一些防護措施：
+        * HTTP header，例如CSP、secure cookie、HttpOnly cookie、nosniff、Strict-Transport-Security、X-Frame-Options
+        * 反射型XSS過濾
+        * Sandbox
+        * 反釣魚網站(黑名單)
+        * 擋mixed content(用HTTPS丟一開始的請求，卻用HTTP丟接續的請求)
+    * 初始化最常見的手法就是XSS，包含幾種類型：
+        * 反射型(reflected XSS)：在url中填入惡意程式碼，後端吐回一個帶有那一段惡意程式碼的回應，於是瀏覽器就會執行那一段程式碼。
+        * 存儲型(stored XSS)：在url中填入惡意程式碼，瀏覽該url時，會將該段程式碼儲存在資料庫，使得網站其它地方跟著被植入惡意程式碼。
+        * DOM XSS：類似反射型，只是它只利用client javascript做XSS。
+        * 通用型XSS：指利用瀏覽器自身或者插件、擴充功能的缺陷進行XSS
+        * XSS病毒：指能夠感染其它瀏覽器的XSS，例如歷史上第一個XSS病毒 [Samy](https://zh.wikipedia.org/wiki/%E8%90%A8%E7%B1%B3_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A0%95%E8%99%AB))。點擊被感染的用戶主頁會導致自己的用戶頁面也被埋入XSS。
