@@ -297,3 +297,19 @@ Mar. 2018
         * DOM XSS：類似反射型，只是它只利用client javascript做XSS。
         * 通用型XSS：指利用瀏覽器自身或者插件、擴充功能的缺陷進行XSS
         * XSS病毒：指能夠感染其它瀏覽器的XSS，例如歷史上第一個XSS病毒 [Samy](https://zh.wikipedia.org/wiki/%E8%90%A8%E7%B1%B3_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A0%95%E8%99%AB))。點擊被感染的用戶主頁會導致自己的用戶頁面也被埋入XSS。
+
+## 03/13, Tue.
+
+### 技術
+
+* *The Browser Hacker's Handbook*：今天讀到XSS之外的初始化手法，包含：
+    * 社交工程(釣魚網站)。現在已經有很多拷貝既有網站的工具，只要花點錢買domain和server，要假造一個看起來和原網站一樣的網站並不困難。
+    * 中間人攻擊，通常是發生在應用層以下(無線網路、ARP(Address Resolution Protocol)下毒、DNS下毒)等等，但也可能在[瀏覽器](https://en.wikipedia.org/wiki/Man-in-the-browser)發生。
+    * 利用網站本身的缺陷
+    * 廣告網路
+* [We Write CSS Like We Did in the 90s, and Yes, It’s Silly](https://alistapart.com/article/we-write-css-like-we-did-in-the-90s-and-yes-its-silly)：作者提到三件至今還是沒定論/不受重視的事：
+    * Declaratoin Sorting
+    * Selector Sorting
+    * Declaration Repetition
+    
+    Declaration/Selector Sorting我覺得似乎有道理。但減少重複宣告這件事，我覺得就像下面的回應說的，以DRY為由去減少repetition，在CSS當中並沒有幫助理解。或許還是交給clean-css吧。
