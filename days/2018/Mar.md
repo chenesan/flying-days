@@ -313,3 +313,11 @@ Mar. 2018
     * Declaration Repetition
     
     Declaration/Selector Sorting我覺得似乎有道理。但減少重複宣告這件事，我覺得就像下面的回應說的，以DRY為由去減少repetition，在CSS當中並沒有幫助理解。或許還是交給clean-css吧。
+    
+## 03/14, Wed.
+
+### 技術
+
+* *The Browser Hacker's Handbook*：今天讀到通信和持續攻擊的一些方式。
+    * 除了XHR輪詢、webSocket等等，還可以通過DNS請求來隱敝地跟server通信。
+    * 假iframe、解不完的confirm、底層popup、mitB劫持等等都是拖時間的好方法。
