@@ -321,3 +321,7 @@ Mar. 2018
 * *The Browser Hacker's Handbook*：今天讀到通信和持續攻擊的一些方式。
     * 除了XHR輪詢、webSocket等等，還可以通過DNS請求來隱敝地跟server通信。
     * 假iframe、解不完的confirm、底層popup、mitB劫持等等都是拖時間的好方法。
+
+## 03/15, Thu.
+
+本日休刊。
