@@ -325,3 +325,26 @@ Mar. 2018
 ## 03/15, Thu.
 
 本日休刊。
+
+## 03/16, Fri.
+
+### 技術
+
+* *The Browser Hacker's Handbook*：今天讀到躲避惡意程式碼檢測的方式，主要可以分成兩種想法：
+    * 對原始碼進行編碼
+        * base64，例如`eval(atob("YWxlcnQoJ2hlbGxvIHdvcmxkJyk="))`。
+            * 你說`eval`這麼evil的東西會被抓包？那            `[].constructor.consturctor(atob("YWxlcnQlcnQoJ2hlbGxvIHdvcmxkJyk="))`？
+            * 或者`setTimeout("YWxlcnQlcnQoJ2hlbGxvIHdvcmxkJyk=")`？(setTimeout可以對字串做eval!)
+        * [空白符編碼](https://www.defcon.org/images/defcon-16/dc16-presentations/defcon-16-kolisar.pdf)，tab是0，whitespace是1，把ASCII轉成這兩者的編碼。由於許多反模糊工具會忽略空白，這就有了可乘之機。
+        * 沒有數字和字母也可以寫javascript!
+            * `!""`是`true`，`![]`是`false`。
+            * `{} + []`會得到`0`
+            * `0 + true`會得到`1`
+            * 任何變數加上空字串或空陣列會變成字串，例如`1+""`會變成`"1"`
+            * 實際上已經有工具([JJencode](http://utf-8.jp/public/jjencode.html)、[AAencode](http://utf-8.jp/public/aaencode.html))可以用了。
+    * 模糊原始碼
+        * 隨機命名變數和方法。混合`.`和`[]`對object求值
+        * 用`setTimeout`執行程式碼，由於檢測軟體常常會設下時限，超過時限就放棄檢測，所以可以嘗試繞過。
+        * 使用不同的上下文作為資料來源
+        * 用`callee`取得函數自身，由此可以把函數轉成字串，攻擊者可以自行檢查函數是否被檢測軟體動過手腳，倘若字串長度不同，則不執行惡意程式。
+        * 利用js引擎自身的奇怪特性可以有針對瀏覽器的browser detection：例如`"\v"=="v"`只在IE有效。
