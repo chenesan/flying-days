@@ -361,3 +361,13 @@ Mar. 2018
     兔子在故事裡總是因為貪睡而跑不贏烏龜，但那也沒什麼好焦慮的，因為那就是兔子啊。
     
     兔子不需要是烏龜。
+    
+    
+## 03/18, Sun.
+
+### 技術
+
+* *The Browser Hacker's Handbook*：今天讀到繞過同源政策(SOP)的方式。
+    * SOP把相同主機名、協議和port的頁面視為同一個來源，如果其中一個不一樣，就不是同源的資源，瀏覽器會擋住對非同源資源的取得。
+    * 瀏覽器的不同部分會有各自對應的SOP，DOM對應的SOP和Java、Flash等plugin對應的SOP其實是不同的，行為也不一樣。
+    * 繞過SOP最多的還是插件和瀏覽器自身的缺陷。另外有些網站把CORS的`Access-Control-Allow-Origin`設成wildcard也是不Ok。
