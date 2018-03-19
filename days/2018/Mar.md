@@ -371,3 +371,14 @@ Mar. 2018
     * SOP把相同主機名、協議和port的頁面視為同一個來源，如果其中一個不一樣，就不是同源的資源，瀏覽器會擋住對非同源資源的取得。
     * 瀏覽器的不同部分會有各自對應的SOP，DOM對應的SOP和Java、Flash等plugin對應的SOP其實是不同的，行為也不一樣。
     * 繞過SOP最多的還是插件和瀏覽器自身的缺陷。另外有些網站把CORS的`Access-Control-Allow-Origin`設成wildcard也是不Ok。
+
+## 03/19, Mon.
+
+### 技術
+
+* *The Browser Hacker's Handbook*：今天則讀到了繞過SOP之後可以做的事情，包含：
+    * 把瀏覽器當成代理伺服器攻擊其它網站或竊取用戶資料
+    * 利用界面劫持欺騙或迫使用戶觸發攻擊行為
+    * 判斷用戶是否瀏覽過特定網站，由於cache過的網站載入速度比起沒有瀏覽過的網站要快很多，可以透過測量載入速度來做判斷。
+
+* [Checkbox vs Radio Buttons](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/)：簡單的說，會互斥的單選題用radio，不互斥的複選題用checkBox，然後選項要簡短。
