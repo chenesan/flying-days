@@ -382,3 +382,7 @@ Mar. 2018
     * 判斷用戶是否瀏覽過特定網站，由於cache過的網站載入速度比起沒有瀏覽過的網站要快很多，可以透過測量載入速度來做判斷。
 
 * [Checkbox vs Radio Buttons](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/)：簡單的說，會互斥的單選題用radio，不互斥的複選題用checkBox，然後選項要簡短。
+
+## 03/20, Tue.
+
+本日休刊。
