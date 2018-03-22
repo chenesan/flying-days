@@ -395,3 +395,9 @@ Mar. 2018
     * Cookie因為有限制大小，舊的cookie是可能被新加進去的cookie擠掉的。
     * 我原本以為有了HttpOnly就是安全的，但其實只要有XSS，攻擊者完全可以把瀏覽器當proxy拿只有帶Cookie才能拿的資料。所以最大的問題還是XSS呢 (倒)
 * [Logging Errors in Client-Side Applications](https://www.sitepoint.com/logging-errors-client-side-apps/)：介紹一些前端做log的工具
+
+## 03/22, Thu.
+
+### 技術
+
+* [讓我們來談談 CSRF](https://blog.techbridge.cc/2017/02/25/csrf-introduction/)：一篇CSRF的簡介，總之就是讓伺服器無法區分這到底是不是使用者自願產生的請求呢。解法有Referer、csrf token、Double Submit Cookie、Same Site Cookie。想想自己手邊的專案...
