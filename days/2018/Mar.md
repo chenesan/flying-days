@@ -401,3 +401,15 @@ Mar. 2018
 ### 技術
 
 * [讓我們來談談 CSRF](https://blog.techbridge.cc/2017/02/25/csrf-introduction/)：一篇CSRF的簡介，總之就是讓伺服器無法區分這到底是不是使用者自願產生的請求呢。解法有Referer、csrf token、Double Submit Cookie、Same Site Cookie。想想自己手邊的專案...
+
+## 03/23, Fri.
+
+### 技術
+
+* [OWASP 2017 Top 10](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)：存參。意外的發現CSRF沒有在榜上呢，因為大家會去注意的緣故，只有5%的app有這個問題。
+
+### 想法
+
+* 最近寫得愈來愈少，一來專案在忙，回到家多半沒什麼力氣；二來比較不那麼急著想知道那麼多事情，或者說，有點懶吧。但竟然也不覺得自己有那麼不好。關於技術的焦慮仍然不會消失，只是不那麼惱人了。可以更好的話很好，但不更好也無妨。
+
+    不過還是會繼續寫下去。
