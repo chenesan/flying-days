@@ -420,3 +420,13 @@ Mar. 2018
 
 * [EditorConfig](http://editorconfig.org/)：今天發現的東東，一致化編輯器的格式像是tab vs space、一行字數限制等等。
 * [Responsive Components: a Solution to the Container Queries Problem](https://philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/)：基於父容器大小而變化的container query一直是大家都想要的功能，但是由於[種種原因](https://www.xanthir.com/b4PR0)(Circular dependency和效能問題)一直沒有被實作。Chrome 64出現了[ResizeObserver API](https://developers.google.com/web/updates/2016/10/resizeobserver)，會在元素的大小變化時呼叫callback，於是可以用js做到container query。ResizeObserver目前已經有到IE9的[Polyfill](https://github.com/que-etc/resize-observer-polyfill)，使用MutationObserver和IE的MutationEvent來實作，雖然效能可能會是另外的問題。
+
+## 03/25, Sun.
+
+### 技術
+
+* [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)：記得以前好像一時想找搭配prettier的eslint plugin找不到，今天才發現其實還是有的啦。
+* [Houdini: Maybe The Most Exciting Development In CSS You've Never Heard Of](https://www.smashingmagazine.com/2016/03/houdini-maybe-the-most-exciting-development-in-css-youve-never-heard-of/)：這篇文章介紹了[CSS houdini](https://github.com/w3c/css-houdini-drafts)。
+    * 簡單的說，CSS的新特性一直以來都發展得很慢。原因在於網站開發者很難控制CSS的行為。不像javascript，可以利用transpile + polyfill的做法，使得開發者在開發時可以使用瀏覽器未實作的語法；CSS很難使用瀏覽器未實作的功能，原因是polyfill太難做，從parsing、layout、painting到composite，幾乎沒有太多開發者可以插手的餘地。
+    * 為此，有人就開始提議在瀏覽器實作一系列的CSS API，讓開發者可以控制CSS。如此即使瀏覽器尚未支援某個CSS特性，開發者也可以自己寫code去控制CSS來polyfill。
+    * 目前Houdini大部分還停留在草稿階段，但各大瀏覽器的vendor已經對此有所討論，也一致認為這是將來瀏覽器發展的特性之一。再過幾年很可能就能使用Houdini api來實作客製化的CSS特性。
