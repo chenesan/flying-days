@@ -446,3 +446,9 @@ Mar. 2018
 ## 03/27, Tue.
 
 ### 感冒休刊一日
+
+## 03/28, Wed.
+
+### 技術
+
+* [react v16.3](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html)：舊的lifecycle如`componentWillReceiveProps`、`componentWillMount`和`componentWillUpdate`由於常常被誤用，React決定要慢慢將它們淘汰掉，在16.3中會對這些方法加入`UNSAFE_`的prefix(但保留原有的方法名)，在v17就會正式去掉了。為了取代這些lifecycle的通常用途，React另外推出了`getDerivedStateFromProps`和`getSnapshotBeforeUpdate`兩個新的lifecycle method。React也提供了[react-lifecycles-compat](https://github.com/reactjs/react-lifecycles-compat)，讓使用舊版本react的用戶仍然可以使用包含這些新方法的component。
