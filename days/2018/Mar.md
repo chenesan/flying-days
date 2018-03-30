@@ -458,3 +458,23 @@ Mar. 2018
 ### 技術
 
 * [The 4 Layers of Single Page Applications You Need to Know](https://hackernoon.com/architecting-single-page-applications-b842ea633c2e)：一篇關於架構SPA的教學，不過好像也是在推銷 [Ramda](http://ramdajs.com/)  XD
+
+## 03/30, Fri.
+
+### 技術
+
+* [12 best practices for user account, authorization and password management](https://cloudplatform.googleblog.com/2018/01/12-best-practices-for-user-account.html)：好像是前不久的文章，被埋沒在愈來愈深的pocket深處中XD
+    1. **存Hash過的密碼**。存明碼萬一被搞爆了，用戶在其它網站的帳戶也跟著完蛋了。另外已經被攻破的hashing如MD5或SHA1也不要用。
+    2. **可能的話允許使用第三方服務的身份**。
+    3. **分離身份和帳戶資料**。把身份和帳戶資料存在不同的表，存身份在帳戶資料中。這可以讓用戶用多個身份存取同一個帳戶、輕易的改動帳戶資料等等。
+    4. **允許使用多個身份存取同一個帳戶**。藉由共通的資料(Email、電話等)作偵測。
+    5. **不要限制密碼長度或字符範圍**。有趣的是作者提到反正你都可以把任何binary hash成Base64了，不管密碼是克林貢語還是emoji應該都是可以接受的範圍。
+    6. **不要對用戶名加上不合理的限制**。不應該太短或包含首尾的空白這些還算是合理的限制。但不應該限制它的最大長度或是使用字元。
+    7. **允許用戶更改用戶名**。用戶總是會有足夠好的理由改用戶名。不同的服務可能會施加不同的限制，例如限制更改的頻率、不允許改回原本的用戶名等等。
+    8. **允許用戶刪除自己的帳戶**。廣義的說，用戶應該有權收回自己在網站上留下的資料。
+    9. **搞清楚session應該多長**。
+    10. **用2FA**。提供在合理範圍內最安全的2FA。
+    11. **讓用戶名可以無視大小寫**。尤其手機輸入常常都會自動首字母大寫很煩的。
+    12. **建造安全的認證系統**。包含密碼重設、帳戶活動紀錄、登入嘗試次數限制、對來路不明的device作2FA認證等等。
+    
+    另外作者在文中多次提到 NIST(國家標準技術研究所)的[Digital Identity Guideline](https://pages.nist.gov/800-63-3/sp800-63b.html)，裡面寫了很多關於身份認證的細節。
