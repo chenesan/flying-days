@@ -7,3 +7,9 @@
 ### 技術
 
 * [How I Learned to Stop Worrying and ❤️ the State Machine](http://raganwald.com/2018/02/23/forde.html)：教你用state machine的概念寫東西，談到什麼是state machine、和我們平常在寫的object有什麼不同(強調「狀態」這個概念、定義了起始狀態、每個狀態本身可以轉變(transition)的其它狀態、觸發狀態改變的事件)。state machine的寫法可以讓讀者一眼看出系統有哪些state，以及每個state可進行的轉變，覺得蠻有趣的。
+
+## 04/02, Mon.
+
+### 技術
+
+* 發問：React的i18n到底該用 [react-intl](https://github.com/yahoo/react-intl) 還是 [react-i18next](https://github.com/i18next/react-i18next) ？目前我還不太知道好壞，暫時先用 react-intl 。不過有一點我知道的是，兩個的 Get Started 文件都有點糟啊...
