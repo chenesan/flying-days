@@ -1,6 +1,6 @@
-# 2018, May.
+# 2018, Sep.
 
-## 05/01, Tue.
+## 09/23, Sun.
 
 ### 第一次參加 leetcode weekly contest
 
