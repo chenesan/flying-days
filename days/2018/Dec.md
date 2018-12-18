@@ -61,3 +61,10 @@ Well但這個作者本身就有參與flow的開發啊 XD。其實一直很想試
     我想，臺灣手機用戶幾乎都使用4G網路，每秒十幾到二十幾 Mbps (這是測網速的速度，實際可能再低一些些)在跑了，所以可能不會因為頻寬導致網站效能差。對比 lighthouse 考量不同國家網路環境未必會都像先進國家那麼好，多半都是用 3G Fast，大約 1Mbps 當作測量基準，一量下去就會出很多問題。產品流量如果幾乎都來自臺灣/4G網路，就不會覺得這是個問題，所以也不會那麼急著優化了。
   * 平常用心寫東西 / 貢獻開源專案，對會用心看履歷或 github 的人資 / 面試官，是有好印象的。
   * 面試的技術內容，大部分是蠻常見的(closure/prototype/this/置中的N種方法/React lifecycle method)。沒碰到過演算法題目，不過可能只是運氣好。有些問題則是會順著做過的專案往下問。
+
+## 12/18, Tue.
+
+### 小發現
+
+* 今天才知道原來 ctrl + ` 是開終端機。(呆)
+* 早上在 Firefox 的 network panel 找 html pretty print 功能的時候才發現 [Firefox的developer tools原來很多是用react + redux做的](https://github.com/devtools-html/)!([官方網站](https://firefox-dev.tools/))。
