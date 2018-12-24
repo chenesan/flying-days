@@ -68,3 +68,26 @@ Well但這個作者本身就有參與flow的開發啊 XD。其實一直很想試
 
 * 今天才知道原來 ctrl + ` 是開終端機。(呆)
 * 早上在 Firefox 的 network panel 找 html pretty print 功能的時候才發現 [Firefox的developer tools原來很多是用react + redux做的](https://github.com/devtools-html/)!([官方網站](https://firefox-dev.tools/))。
+
+## 12/24, Mon.
+
+上週三後身體一直不太舒服，眼睛腫頭昏昏鼻子過敏，可能是空氣不好的緣故吧。一週什麼也沒寫。
+
+沒有健康的身體想做什麼都困難呀。
+
+### firefox
+
+最近IE Edge宣佈將要放棄他們自己開發的渲染引擎改用Chromium，加上讀了這篇[講瀏覽器多樣性重要性的文章](https://adactio.com/journal/14608)，最近把mac上面的預設瀏覽器再次移到firefox。大約一兩年前我也移過一次，當時覺得開發工具不順手，現在回來用覺得好多了。尤其DOM檢視器還會直接在節點旁邊標`event`(按一下可以顯示全部的事件處理器；chrome雖然也可以看但操作路徑長得多)或`flex`等等的小tag，挺舒服的。唯一的小缺點大概就是沒辦法和 chrome 一樣 pretty print html response 了吧。之後再來研究手機移到firefox使用上是不是一樣順...
+
+另外發現duckduckgo搜出來的東西也比以前準確(我在firefox預設使用duckduckgo)。印象中以前只要是查技術問題多半都要切到google(**!g**)，現在這樣的狀況有改善一些。不過在找不到東西的時候還是難免會想「duckduckgo找不到，google應該會有」，唉唉。
+
+### 排版
+
+* [簡單做好中文排版](https://wanderer.tw/%E7%B0%A1%E5%96%AE%E5%81%9A%E5%A5%BD%E4%B8%AD%E6%96%87%E6%8E%92%E7%89%88/)講了很多有趣的小細節，像是：
+
+  * 怎麼區分繁體和簡體字型
+  * 中台港日的系統字差異
+  * 中英混排的時候怎麼對齊兩邊又不影響字距
+
+
+
